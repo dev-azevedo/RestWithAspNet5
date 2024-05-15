@@ -29,6 +29,12 @@ namespace RestWithASPNET.Business.Implementations
             return _converter.Parse(_repository.FindById(id));
         }
 
+        
+        public List<PersonVO> FindByName(string firstName, string lastName)
+        {
+            return _converter.Parse(_repository.FindByName(firstName, lastName));
+        }
+
         public PersonVO Create(PersonVO person)
         {
             var personEntity = _converter.Parse(person);
@@ -53,5 +59,6 @@ namespace RestWithASPNET.Business.Implementations
             var personEntity = _repository.Disable(id);
             return _converter.Parse(personEntity);
         }
+
     }
 }
