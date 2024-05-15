@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using RestWithASPNET.Configurations;
@@ -37,12 +38,37 @@ namespace RestWithASPNET.Services.Implementations
 
         public string GenerateRefreshToken()
         {
+            var randomNumber = new Byte[32];
+            using(var rng = RandomNumberGenerator.Create()) {
+                rng.GetBytes(randomNumber);
+                return Convert.ToBase64String(randomNumber);
+            }
+
             throw new System.NotImplementedException();
         }
 
         public ClaimsPrincipal GetPrincipalFromExpiredToken(string token)
         {
-            throw new System.NotImplementedException();
+            var tokenValidationParameters = new TokenValidationParameters {
+                ValidateAudience = false,
+                ValidateIssuer = false,
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.Secret)),
+                ValidateLifetime = false
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            SecurityToken securityToken;
+
+            ClaimsPrincipal principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out securityToken);
+
+            var jwtSecurityToken = securityToken as JwtSecurityToken;
+            if(jwtSecurityToken == null || 
+            !jwtSecurityToken.Header.Alg.Equals(
+                SecurityAlgorithms.HmacSha256, StringComparison.InvariantCulture)) 
+                throw new SecurityTokenException("Invalid token");
+                
+            return principal;
         }
 
     }
