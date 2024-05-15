@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using RestWithASPNET.Data.VO;
-using RestWithASPNET.Hypermedia.Constants;
-using System;
+﻿using System;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using RestWithASPNET.Data.VO;
+using RestWithASPNET.Hypermedia.Constants;
 
 namespace RestWithASPNET.Hypermedia.Enricher
 {
@@ -15,37 +15,55 @@ namespace RestWithASPNET.Hypermedia.Enricher
         {
             var path = "api/v1/person";
             string link = GetLink(content.Id, urlHelper, path);
-            content.Links.Add(new HyperMediaLink()
-            {
-                Action = HttpActionVerb.GET,
-                Href = link,
-                Rel = RelationType.self,
-                Type = ResponseTypeFormat.DefaultGet
-            });
+            content.Links.Add(
+                new HyperMediaLink()
+                {
+                    Action = HttpActionVerb.GET,
+                    Href = link,
+                    Rel = RelationType.self,
+                    Type = ResponseTypeFormat.DefaultGet
+                }
+            );
 
-            content.Links.Add(new HyperMediaLink()
-            {
-                Action = HttpActionVerb.POST,
-                Href = link,
-                Rel = RelationType.self,
-                Type = ResponseTypeFormat.DefaultPost
-            });
+            content.Links.Add(
+                new HyperMediaLink()
+                {
+                    Action = HttpActionVerb.POST,
+                    Href = link,
+                    Rel = RelationType.self,
+                    Type = ResponseTypeFormat.DefaultPost
+                }
+            );
 
-            content.Links.Add(new HyperMediaLink()
-            {
-                Action = HttpActionVerb.PUT,
-                Href = link,
-                Rel = RelationType.self,
-                Type = ResponseTypeFormat.DefaultPut
-            });
+            content.Links.Add(
+                new HyperMediaLink()
+                {
+                    Action = HttpActionVerb.PUT,
+                    Href = link,
+                    Rel = RelationType.self,
+                    Type = ResponseTypeFormat.DefaultPut
+                }
+            );
 
-            content.Links.Add(new HyperMediaLink()
-            {
-                Action = HttpActionVerb.DELETE,
-                Href = link,
-                Rel = RelationType.self,
-                Type = "int"
-            });
+            content.Links.Add(
+                new HyperMediaLink()
+                {
+                    Action = HttpActionVerb.PATCH,
+                    Href = link,
+                    Rel = RelationType.self,
+                    Type = ResponseTypeFormat.DefaultPatch
+                }
+            );
+
+            content.Links.Add(
+                new HyperMediaLink()
+                {
+                    Action = HttpActionVerb.DELETE,
+                    Href = link,
+                    Rel = RelationType.self,
+                    Type = "int"
+                }
+            );
 
             return null;
         }
@@ -55,7 +73,9 @@ namespace RestWithASPNET.Hypermedia.Enricher
             lock (_lock)
             {
                 var url = new { controller = path, id = id };
-                return new StringBuilder(urlHelper.Link("DefaultApi", url)).Replace("%2F", "/").ToString();
+                return new StringBuilder(urlHelper.Link("DefaultApi", url))
+                    .Replace("%2F", "/")
+                    .ToString();
             }
         }
     }

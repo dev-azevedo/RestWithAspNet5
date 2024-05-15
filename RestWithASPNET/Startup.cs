@@ -148,6 +148,7 @@ namespace RestWithASPNET
 
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IPersonRepository, PersonRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
