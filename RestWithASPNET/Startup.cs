@@ -22,10 +22,9 @@ namespace RestWithASPNET
 {
     public class Startup
     {
-       
-
         public IConfiguration Configuration { get; }
         public IWebHostEnvironment Environment { get; }
+        
         public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
@@ -33,8 +32,6 @@ namespace RestWithASPNET
 
             Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
         }
-
-     
 
         public void ConfigureServices(IServiceCollection services)
         {
@@ -89,7 +86,6 @@ namespace RestWithASPNET
 
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
         }
-
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
