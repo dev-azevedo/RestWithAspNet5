@@ -28,6 +28,11 @@ namespace RestWithASPNET.Repository
            return dataset.FirstOrDefault(u => u.UserName.Equals(user.UserName) && u.Password.Equals(pass));
         }
 
+          public User ValidateCredentials(string username)
+        {
+            return dataset.SingleOrDefault(u => u.UserName.Equals(username));
+        }
+
 
         public User RefreshUserInfo(User user)
         {
@@ -50,6 +55,7 @@ namespace RestWithASPNET.Repository
             }
 
         }
+        
         private string ComputeHash(string input, SHA256CryptoServiceProvider algorithm)
         {
             Byte[] inputBytes = Encoding.UTF8.GetBytes(input);
@@ -57,6 +63,9 @@ namespace RestWithASPNET.Repository
 
             return BitConverter.ToString(hashedBytes);
         }
+
+      
+
     }
 }
 
