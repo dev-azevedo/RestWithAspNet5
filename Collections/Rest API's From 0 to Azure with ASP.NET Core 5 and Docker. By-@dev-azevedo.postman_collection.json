@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b3282fc8-8d06-49dd-b343-e160cad5a933",
+		"_postman_id": "149ec27c-6157-48b7-af32-d334b5447633",
 		"name": "Rest API's From 0 to Azure with ASP.NET Core 5 and Docker. By:@dev-azevedo",
 		"description": "API RESTful developed in course Rest API's From 0 to Azure with ASP.NET Core 5 and Docker.\n\nContact Support:\n Name: Jhonatan Azevedo",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -11,7 +11,7 @@
 			"name": "api",
 			"item": [
 				{
-					"name": "v{version}",
+					"name": "v1",
 					"item": [
 						{
 							"name": "Book",
@@ -83,7 +83,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"id\": \"<long>\",\n  \"author\": \"<string>\",\n  \"launchDate\": \"<dateTime>\",\n  \"price\": \"<double>\",\n  \"title\": \"<string>\",\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\",\n      \"type\": \"<string>\",\n      \"action\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\",\n      \"type\": \"<string>\",\n      \"action\": \"<string>\"\n    }\n  ]\n}",
+											"raw": "{\n  \"author\": \"Kyle Banker\",\n  \"launchDate\": \"2011-11-29T13:50:05.878\",\n  \"price\": 30.5,\n  \"title\": \"MongoDD\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -162,7 +162,7 @@
 										],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n  \"id\": \"<long>\",\n  \"author\": \"<string>\",\n  \"launchDate\": \"<dateTime>\",\n  \"price\": \"<double>\",\n  \"title\": \"<string>\",\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\",\n      \"type\": \"<string>\",\n      \"action\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\",\n      \"type\": \"<string>\",\n      \"action\": \"<string>\"\n    }\n  ]\n}",
+											"raw": "{\n    \"id\": 16,\n    \"author\": \"Kyle Banker\",\n    \"launchDate\": \"2011-11-29T13:50:05.878\",\n    \"price\": 30.5,\n    \"title\": \"MongoDB in Action\"\n}",
 											"options": {
 												"raw": {
 													"headerFamily": "json",
@@ -236,7 +236,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/api/v{{version}}/Book/:id",
+											"raw": "{{baseUrl}}/api/v{{version}}/Book/16",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -244,13 +244,7 @@
 												"api",
 												"v{{version}}",
 												"Book",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "id",
-													"value": ""
-												}
+												"16"
 											]
 										}
 									},
@@ -299,7 +293,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{baseUrl}}/api/v{{version}}/Book/:id",
+											"raw": "{{baseUrl}}/api/v{{version}}/Book/16",
 											"host": [
 												"{{baseUrl}}"
 											],
@@ -307,14 +301,7 @@
 												"api",
 												"v{{version}}",
 												"Book",
-												":id"
-											],
-											"variable": [
-												{
-													"key": "id",
-													"value": "<long>",
-													"description": "(Required) "
-												}
+												"16"
 											]
 										}
 									},
@@ -1286,6 +1273,398 @@
 												"v{{version}}",
 												"Auth",
 												"signin"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"address\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\",\n      \"type\": \"<string>\",\n      \"action\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\",\n      \"type\": \"<string>\",\n      \"action\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Person",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Person"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"address\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\",\n      \"type\": \"<string>\",\n      \"action\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\",\n      \"type\": \"<string>\",\n      \"action\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"address\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\",\n      \"type\": \"<string>\",\n      \"action\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\",\n      \"type\": \"<string>\",\n      \"action\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Person",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Person"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"address\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\",\n      \"type\": \"<string>\",\n      \"action\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\",\n      \"type\": \"<string>\",\n      \"action\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Person",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Person"
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "/api/v{{version}}/Refresh",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"if (responseCode.code >= 200 && responseCode.code <= 299) {\r",
+													"    var jsonData = JSON.parse(responseBody);\r",
+													"\r",
+													"    postman.setEnvironmentVariable('accessToken', jsonData.accessToken);\r",
+													"    postman.setEnvironmentVariable('refreshToken', jsonData.refreshToken);\r",
+													"}"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n   \"accessToken\": \"{{accessToken}}\",\n    \"refreshToken\": \"{{refreshToken}}\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/Auth/refresh",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"Auth",
+												"refresh"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "Success",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"address\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\",\n      \"type\": \"<string>\",\n      \"action\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\",\n      \"type\": \"<string>\",\n      \"action\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Person",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Person"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"address\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\",\n      \"type\": \"<string>\",\n      \"action\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\",\n      \"type\": \"<string>\",\n      \"action\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"name": "Bad Request",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"address\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\",\n      \"type\": \"<string>\",\n      \"action\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\",\n      \"type\": \"<string>\",\n      \"action\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Person",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Person"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+										},
+										{
+											"name": "Unauthorized",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"id\": \"<long>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"address\": \"<string>\",\n  \"gender\": \"<string>\",\n  \"links\": [\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\",\n      \"type\": \"<string>\",\n      \"action\": \"<string>\"\n    },\n    {\n      \"rel\": \"<string>\",\n      \"href\": \"<string>\",\n      \"type\": \"<string>\",\n      \"action\": \"<string>\"\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v{{version}}/Person",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v{{version}}",
+														"Person"
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"type\": \"<string>\",\n  \"title\": \"<string>\",\n  \"status\": \"<integer>\",\n  \"detail\": \"<string>\",\n  \"instance\": \"<string>\"\n}"
+										}
+									]
+								},
+								{
+									"name": "/api/v{{version}}/Revoke",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer {{accessToken}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v{{version}}/Auth/Revoke",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v{{version}}",
+												"Auth",
+												"Revoke"
 											]
 										}
 									},

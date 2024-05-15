@@ -19,29 +19,42 @@ namespace RestWithASPNET.Repository
             _context = context;
             dataset = _context.Set<User>();
         }
-            
-
 
         public User ValidateCredentials(UserVO user)
         {
             var pass = ComputeHash(user.Password, new SHA256CryptoServiceProvider());
-           return dataset.FirstOrDefault(u => u.UserName.Equals(user.UserName) && u.Password.Equals(pass));
+            return dataset.FirstOrDefault(u =>
+                u.UserName.Equals(user.UserName) && u.Password.Equals(pass)
+            );
         }
 
-          public User ValidateCredentials(string username)
+        public User ValidateCredentials(string username)
         {
             return dataset.SingleOrDefault(u => u.UserName.Equals(username));
         }
 
+        public bool RevokeToken(string username)
+        {
+            var user = dataset.SingleOrDefault(u => u.UserName.Equals(username));
+
+            if (user == null)
+                return false;
+
+            user.RefreshToken = null;
+            _context.SaveChanges();
+
+            return true;
+        }
 
         public User RefreshUserInfo(User user)
         {
-            if(!dataset.Any(u => u.Id.Equals(user.Id))) return null;
-
+            if (!dataset.Any(u => u.Id.Equals(user.Id)))
+                return null;
 
             var result = dataset.SingleOrDefault(p => p.Id.Equals(user.Id));
-            
-            if (result == null) return null;
+
+            if (result == null)
+                return null;
 
             try
             {
@@ -53,9 +66,8 @@ namespace RestWithASPNET.Repository
             {
                 throw;
             }
-
         }
-        
+
         private string ComputeHash(string input, SHA256CryptoServiceProvider algorithm)
         {
             Byte[] inputBytes = Encoding.UTF8.GetBytes(input);
@@ -63,9 +75,5 @@ namespace RestWithASPNET.Repository
 
             return BitConverter.ToString(hashedBytes);
         }
-
-      
-
     }
 }
-

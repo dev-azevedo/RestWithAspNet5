@@ -27,6 +27,12 @@ namespace RestWithASPNET.Business.Implementations
             _tokenService = tokenService;
         }
 
+        public bool RevokeToken(string username)
+        {
+            return _repository.RevokeToken(username);
+        }
+
+
         public TokenVO ValidateCredentials(UserVO userCredentials)
         {
             var user = _repository.ValidateCredentials(userCredentials);
