@@ -38,7 +38,9 @@ namespace RestWithASPNET
 
         public void ConfigureServices(IServiceCollection services)
         {
-          
+            services.AddCors(option => option.AddDefaultPolicy(builder => {
+                builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+            }));
 
             services.AddControllers();
 
@@ -100,7 +102,10 @@ namespace RestWithASPNET
 
             app.UseRouting();
 
+            app.UseCors();
+
             app.UseSwagger();
+
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Rest API's From 0 to Azure with ASP.NET Core 5 and Docker. - v1");
