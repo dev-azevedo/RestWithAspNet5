@@ -155,6 +155,36 @@ namespace RestWithASPNET
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IPersonRepository, PersonRepository>();
+
+            services.AddSwaggerGen(swagger =>
+            {
+
+
+                #region esquema de segurança JWT
+                swagger.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "JWT Authotization header 'Authotization: Bearer token' ",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                });
+
+                swagger.AddSecurityRequirement(new OpenApiSecurityRequirement
+                    {
+                        {
+                            new OpenApiSecurityScheme
+                            {
+                                Reference = new OpenApiReference
+                                {
+                                    Type = ReferenceType.SecurityScheme,
+                                    Id = "Bearer"
+                                }
+                            },
+                            Array.Empty<string>()
+                        }
+                    });
+                #endregion
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -178,6 +208,9 @@ namespace RestWithASPNET
                     "/swagger/v1/swagger.json",
                     "Rest API's From 0 to Azure with ASP.NET Core 5 and Docker. - v1"
                 );
+
+                
+
             });
 
             var option = new RewriteOptions();
